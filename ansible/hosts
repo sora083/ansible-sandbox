@@ -1,3 +1,11 @@
 [all]
 controller
 target
+
+[all:vars]
+
+[local]
+localhost ansible_connection=local
+
+[local:vars]
+app=http://example.com

@@ -1,0 +1,7 @@
+- name: Send notification message via Slack
+  local_action:
+    module: slack
+    domain: u-next.slack.com
+    token: slackapitoken
+    msg: "{{ app }} completed"
+    channel: "#isucon"

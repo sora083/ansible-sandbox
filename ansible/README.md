@@ -1,3 +1,4 @@
+### commands
 
 syntax check
 ```
@@ -19,6 +20,15 @@ run
 ansible-playbook -i ./hosts ./00-devel.yml
 ```
 
+try
+```
+ansible-playbook -i ./hosts ./00-1-devel.yml
+
+ansible-playbook -i ./hosts ./01-qualifier.yml
+
+ansible-playbook -i ./hosts -l local ./notify-slack.yml
+```
+
 補足
 * ssh_configを設定済み
 
@@ -34,3 +44,8 @@ target ansible_ssh_user=vagrant ansible_ssh_private_key_file=/.vagrant/machines/
     * 初期インストール
 * 01-qualify
     * nginx, mysql
+
+
+### 参考
+* [slack通知](https://qiita.com/imunew/items/ea2bba8859bc709ffa1f)
+* [Ansible Slack module をラップして使う](https://qiita.com/yyoshiki41/items/29aab57f44de1d82edc3)

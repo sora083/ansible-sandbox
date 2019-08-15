@@ -1,0 +1,14 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+    - apt: name={{item}}
+      with_items:
+        - build-essential
+        - pkg-config
+        - libssl-dev
+        - libpsl-dev
+        - libghc-gnutls-dev
+        - unzip
+        - graphviz
+        - netdata

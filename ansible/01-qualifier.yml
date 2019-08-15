@@ -29,12 +29,14 @@
   #   - shell: |
   #       cp /tmp/isucon4/qualifier/ami/files/env.sh /tmp/isucon/env.sh
   #       chmod a+x /tmp/isucon/env.sh
+  # .bashrcや.vimrcなどを用意してここでセットできると良いかも。.gitignoreとかも用意しておく？
   #   - shell: |
   #       cp /tmp/isucon4/qualifier/ami/files/bashrc /home/isucon/.bashrc
   #       chmod a+x /home/isucon/.bashrc
   #   - command: chown -R isucon:isucon /tmp/isucon
   #   - command: rsync -avz --delete --exclude-from=/tmp/isucon4/qualifier/ami/files/rsync_exclude.txt /tmp/isucon/ /home/isucon/
   #     sudo: yes
+  # DBの初期化処理などを入れる
   # post_tasks:
   #   - command: ./init.sh
   #     sudo_user: isucon
