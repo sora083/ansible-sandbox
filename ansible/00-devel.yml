@@ -1,0 +1,10 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+    - apt: name={{item}}
+      with_items:
+        - git
+        - vim
+        - dstat
+        - wget
