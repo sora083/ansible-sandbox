@@ -1,3 +1,11 @@
-[all]
+[web]
 controller
 target
+
+[web:vars]
+
+[local]
+localhost ansible_connection=local
+
+[local:vars]
+app=test

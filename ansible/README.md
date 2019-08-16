@@ -1,12 +1,13 @@
+### commands
 
 syntax check
 ```
-ansible-playbook -i ./hosts ./playbook.yml --syntax-check
+ansible-playbook -i ./hosts -l web ./playbook.yml --syntax-check
 ```
 
 test run
 ```
-ansible-playbook -i ./hosts ./00-devel.yml --check --diff
+ansible-playbook -i ./hosts -l web ./00-devel.yml --check --diff
 ```
 
 test command
@@ -16,7 +17,14 @@ ansible -i hosts all -m ping
 
 run
 ```
-ansible-playbook -i ./hosts ./00-devel.yml
+ansible-playbook -i ./hosts -l web ./00-devel.yml
+```
+
+try
+```
+ansible-playbook -i ./hosts -l web ./00-1-devel.yml
+
+ansible-playbook -i ./hosts -l local ./send-slack.yml
 ```
 
 補足
@@ -34,3 +42,8 @@ target ansible_ssh_user=vagrant ansible_ssh_private_key_file=/.vagrant/machines/
     * 初期インストール
 * 01-qualify
     * nginx, mysql
+
+
+### 参考
+* [slack通知](https://qiita.com/imunew/items/ea2bba8859bc709ffa1f)
+* [Ansible Slack module をラップして使う](https://qiita.com/yyoshiki41/items/29aab57f44de1d82edc3)
