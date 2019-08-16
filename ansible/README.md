@@ -24,7 +24,7 @@ try
 ```
 ansible-playbook -i ./hosts -l web ./00-1-devel.yml
 
-ansible-playbook -i ./hosts -l local ./notify-slack.yml
+ansible-playbook -i ./hosts -l local ./send-slack.yml
 ```
 
 補足

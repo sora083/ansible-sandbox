@@ -3,5 +3,5 @@
     module: slack
     domain: u-next.slack.com
     token: slackapitoken
-    msg: "{{ app }} completed"
+    msg: "{{ msg }} completed"
     channel: "#isucon"
