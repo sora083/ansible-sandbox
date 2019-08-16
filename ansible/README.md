@@ -2,12 +2,12 @@
 
 syntax check
 ```
-ansible-playbook -i ./hosts ./playbook.yml --syntax-check
+ansible-playbook -i ./hosts -l web ./playbook.yml --syntax-check
 ```
 
 test run
 ```
-ansible-playbook -i ./hosts ./00-devel.yml --check --diff
+ansible-playbook -i ./hosts -l web ./00-devel.yml --check --diff
 ```
 
 test command
@@ -17,14 +17,12 @@ ansible -i hosts all -m ping
 
 run
 ```
-ansible-playbook -i ./hosts ./00-devel.yml
+ansible-playbook -i ./hosts -l web ./00-devel.yml
 ```
 
 try
 ```
-ansible-playbook -i ./hosts ./00-1-devel.yml
-
-ansible-playbook -i ./hosts ./01-qualifier.yml
+ansible-playbook -i ./hosts -l web ./00-1-devel.yml
 
 ansible-playbook -i ./hosts -l local ./notify-slack.yml
 ```
