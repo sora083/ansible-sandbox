@@ -8,16 +8,22 @@
     - apt: name=mysql-server
     - service: name=mysql state=started enabled=true
     - apt: name=mysqldb
+    - apt: name=netdata
     # gitでアクセスできない
     - apt: name=git
-    - git: repo=https://github.com/ysokjkr/isucon9.git dest=/tmp/isucon9
-    - shell: cp /tmp/isucon9/nginx/nginx_sample.conf /etc/nginx/nginx.conf
+    #- git: repo=https://github.com/ysokjkr/isucon9.git dest=/tmp/isucon9
+    - git: repo=https://github.com/sora083/ansible-sandbox.git dest=/tmp/isucon9
+    - shell: cp /tmp/isucon9/ansible/template/nginx_sample.conf /etc/nginx/nginx.conf
       notify:
         - reload nginx
     - name: copy my.cnf
-      shell: cp /tmp/isucon9/mysql/my.cnf /etc/my.cnf
+      shell: cp /tmp/isucon9/ansible/template/my.cnf /etc/my.cnf
       notify:
         - restart mysqld
+    - name: copy netdata.conf
+      shell: cp /tmp/isucon9/ansible/template/netdata.conf /etc/netdata.conf
+      notify:
+        - restart netdata
   #   - command: rm -rf /tmp/isucon
   #     args:
   #       removes: /tmp/isucon
@@ -49,3 +55,5 @@
       action: service name=mysql state=restarted
     - name: reload nginx
       action: service name=nginx state=restarted
+    - name: restart netdata
+      action: service name=netdata state=restarted

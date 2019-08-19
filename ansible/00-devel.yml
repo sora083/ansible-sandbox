@@ -15,4 +15,4 @@
         - libghc-gnutls-dev
         - unzip
         - graphviz
-        - netdata
+        #- netdata

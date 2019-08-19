@@ -1,10 +1,15 @@
-Host controller
+Host isu01
   Hostname 127.0.0.1
-  User vagrant
-  Port 2210
+  User isucon
+  Port 22
   IdentityFile ~/developer/private/ansible-sandbox/vagrant/.vagrant/machines/controller/virtualbox/private_key
-Host target
+Host isu02
   Hostname 127.0.0.1
   User vagrant
-  Port 2220
+  Port 22
+  IdentityFile ~/developer/private/ansible-sandbox/vagrant/.vagrant/machines/target/virtualbox/private_key
+Host isu03
+  Hostname 127.0.0.1
+  User vagrant
+  Port 22
   IdentityFile ~/developer/private/ansible-sandbox/vagrant/.vagrant/machines/target/virtualbox/private_key
