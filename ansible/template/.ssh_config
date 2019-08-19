@@ -1,0 +1,10 @@
+Host controller
+  Hostname 127.0.0.1
+  User vagrant
+  Port 2210
+  IdentityFile ~/developer/private/ansible-sandbox/vagrant/.vagrant/machines/controller/virtualbox/private_key
+Host target
+  Hostname 127.0.0.1
+  User vagrant
+  Port 2220
+  IdentityFile ~/developer/private/ansible-sandbox/vagrant/.vagrant/machines/target/virtualbox/private_key
