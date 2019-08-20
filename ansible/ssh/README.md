@@ -14,6 +14,7 @@ ls -l ~/isucon/.ssh
 ```
 cat ~/isucon/.ssh/id_rsa.pub| ssh isucon@${target_host} "mkdir -p ~/.ssh; cat >> ~/.ssh/authorized_keys"
 
+e.g.)
 cat ~/isucon/.ssh/id_rsa.pub| ssh vagrant@controller "mkdir -p ~/.ssh; cat >> ~/.ssh/authorized_keys"
 cat ~/isucon/.ssh/id_rsa.pub| ssh vagrant@target "mkdir -p ~/.ssh; cat >> ~/.ssh/authorized_keys"
 ```

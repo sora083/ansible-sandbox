@@ -10,3 +10,5 @@
         - wget
         - unzip
         - graphviz
+        # templateモジュールの利用に必要
+        - ansible

@@ -9,8 +9,6 @@ test run
 ```
 ansible-playbook -i ./hosts -l web ./00-devel.yml --check --diff
 
-ansible-playbook -i ./hosts -l web ./01-qualifier.yml --check --diff
-
 ansible-playbook -i ./hosts -l web1 ./01-qualifier.yml --check --diff
 ```
 
@@ -22,12 +20,12 @@ ansible -i hosts all -m ping
 run
 ```
 ansible-playbook -i ./hosts -l web ./00-devel.yml
-```
 
-try
-```
 ansible-playbook -i ./hosts -l web1 ./01-qualifier.yml
+```
 
+slack send
+```
 ansible-playbook -i ./hosts -l local ./send-slack.yml
 ```
 
@@ -39,7 +37,12 @@ ansible-playbook -i ./hosts -l local ./send-slack.yml
 ```
 controller ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/controller/virtualbox/private_key
 target ansible_ssh_user=vagrant ansible_ssh_private_key_file=/.vagrant/machines/target/virtualbox/private_key
-````
+```
+
+グループの関係を確認するコマンド
+```
+ansible-inventory -i hosts --graph
+```
 
 ファイル説明
 * 00-devel
@@ -56,8 +59,7 @@ service --status-all | grep -E "mysql|nginx|netdata"
 
 
 ### 課題
-* 変数差し替えができていない
-* nginxのリスタートでエラー -> たぶん変数差し替えがうまくいったないせい
+* nginxのリスタートをどうやるか？ -> templateモジュールではhandlerが使えない
 * mysqlは自分でインストールしないほうがいいかも・・
 
 ### 参考

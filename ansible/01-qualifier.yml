@@ -2,9 +2,10 @@
 - hosts: all
   sudo: yes
   vars:
-    host01: "{{ host01 }}"
-    host02: "{{ host02 }}"
-    host03: "{{ host03 }}"
+    # ホスト名をそれぞれ入れる
+    host01: "127.0.0.1"
+    host02: "127.0.0.2"
+    host03: "127.0.0.3"
   tasks:
     - user: name=isucon groups=sudo
     - apt: name=nginx-full
@@ -14,19 +15,26 @@
     # mysqlは自分でやらないほうがいいかも・・
     - apt: name=mysql-server-5.7
     - apt: name=netdata
-    # gitでアクセスできない
-    - apt: name=git
-    #- git: repo=https://github.com/ysokjkr/isucon9.git dest=/tmp/isucon9
-    - git: repo=https://github.com/sora083/ansible-sandbox.git dest=/tmp/isucon9
-    - shell: cp /tmp/isucon9/ansible/template/nginx.conf /etc/nginx/nginx.conf
-      notify:
-        - restart nginx
+    - name: put nginx.conf with template
+      template:
+        src: ./template/nginx.conf
+        dest: /etc/nginx/nginx.conf
+        backup: yes
+        # restartどうできる？
+        # notify:
+        #  - restart nginx
     - name: copy my.cnf
-      shell: cp /tmp/isucon9/ansible/template/my.cnf /etc/my.cnf
+      copy:
+        src: ./template/my.cnf
+        dest: /etc/my.cnf
+        backup: yes
       notify:
         - restart mysqld
     - name: copy netdata.conf
-      shell: cp /tmp/isucon9/ansible/template/netdata.conf /etc/netdata.conf
+      copy:
+          src: ./template//netdata.conf
+          dest: /etc/netdata.conf
+          backup: yes
       notify:
         - restart netdata
   #   - command: rm -rf /tmp/isucon
