@@ -2,14 +2,14 @@ Host isu01
   Hostname 127.0.0.1
   User isucon
   Port 22
-  IdentityFile ~/developer/private/ansible-sandbox/vagrant/.vagrant/machines/controller/virtualbox/private_key
+  IdentityFile ~/isucon/.ssh/id_rsa
 Host isu02
   Hostname 127.0.0.1
-  User vagrant
+  User isucon
   Port 22
-  IdentityFile ~/developer/private/ansible-sandbox/vagrant/.vagrant/machines/target/virtualbox/private_key
+  IdentityFile ~/isucon/.ssh/id_rsa
 Host isu03
   Hostname 127.0.0.1
-  User vagrant
+  User isucon
   Port 22
-  IdentityFile ~/developer/private/ansible-sandbox/vagrant/.vagrant/machines/target/virtualbox/private_key
+  IdentityFile ~/isucon/.ssh/id_rsa

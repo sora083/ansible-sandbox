@@ -1,21 +1,26 @@
 ---
 - hosts: all
   sudo: yes
+  vars:
+    host01: "{{ host01 }}"
+    host02: "{{ host02 }}"
+    host03: "{{ host03 }}"
   tasks:
     - user: name=isucon groups=sudo
     - apt: name=nginx-full
     - service: name=nginx enabled=true
     - apt: name=mysql-server
     - service: name=mysql state=started enabled=true
-    - apt: name=mysqldb
+    # mysqlは自分でやらないほうがいいかも・・
+    - apt: name=mysql-server-5.7
     - apt: name=netdata
     # gitでアクセスできない
     - apt: name=git
     #- git: repo=https://github.com/ysokjkr/isucon9.git dest=/tmp/isucon9
     - git: repo=https://github.com/sora083/ansible-sandbox.git dest=/tmp/isucon9
-    - shell: cp /tmp/isucon9/ansible/template/nginx_sample.conf /etc/nginx/nginx.conf
+    - shell: cp /tmp/isucon9/ansible/template/nginx.conf /etc/nginx/nginx.conf
       notify:
-        - reload nginx
+        - restart nginx
     - name: copy my.cnf
       shell: cp /tmp/isucon9/ansible/template/my.cnf /etc/my.cnf
       notify:
@@ -53,7 +58,7 @@
   handlers:
     - name: restart mysqld
       action: service name=mysql state=restarted
-    - name: reload nginx
+    - name: restart nginx
       action: service name=nginx state=restarted
     - name: restart netdata
       action: service name=netdata state=restarted

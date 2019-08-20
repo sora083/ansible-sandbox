@@ -10,9 +10,12 @@ ssh-keygen -t rsa -f ~/isucon/.ssh/id_rsa
 ls -l ~/isucon/.ssh
 ```
 
-### ssh-copy-id
+### 公開鍵をセット
 ```
-ssh-copy-id -i ~/isucon/.ssh/id_rsa.pub isucon@${target_host}
+cat ~/isucon/.ssh/id_rsa.pub| ssh isucon@${target_host} "mkdir -p ~/.ssh; cat >> ~/.ssh/authorized_keys"
+
+cat ~/isucon/.ssh/id_rsa.pub| ssh vagrant@controller "mkdir -p ~/.ssh; cat >> ~/.ssh/authorized_keys"
+cat ~/isucon/.ssh/id_rsa.pub| ssh vagrant@target "mkdir -p ~/.ssh; cat >> ~/.ssh/authorized_keys"
 ```
 
 ### 懸念点

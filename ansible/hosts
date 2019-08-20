@@ -1,12 +1,24 @@
+[web1]
+controller
+
+[web1:vars]
+# 実際のホスト名を設定
+host01=127.0.0.1
+host02=127.0.0.2
+host03=127.0.0.3
+
+[web2]
+target
+
 [web]
 controller
 target
 
 [web:vars]
 # 実際のホスト名を設定
-#host01=
-#host02=
-#host03=
+host01=127.0.0.1
+host02=127.0.0.2
+host03=127.0.0.3
 
 [local]
 localhost ansible_connection=local
