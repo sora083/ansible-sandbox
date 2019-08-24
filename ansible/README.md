@@ -7,19 +7,18 @@ ansible-playbook -i ./hosts -l web ./playbook.yml --syntax-check
 
 test run
 ```
-ansible-playbook -i ./hosts -l web ./00-devel.yml --check --diff
+ansible-playbook -i ./hosts -l web ./install-pkg.yml --check --diff
+
+ansible-playbook -i ./hosts -l web1 ./deploy-middleware.yml --check --diff
 
 ansible-playbook -i ./hosts -l web1 ./01-qualifier.yml --check --diff
 ```
 
-test command
-```
-ansible -i hosts all -m ping
-```
-
 run
 ```
-ansible-playbook -i ./hosts -l web ./00-devel.yml
+ansible-playbook -i ./hosts -l web ./install-pkg.yml
+
+ansible-playbook -i ./hosts -l web1 ./deploy-middleware.yml
 
 ansible-playbook -i ./hosts -l web1 ./01-qualifier.yml
 ```

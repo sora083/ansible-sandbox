@@ -32,7 +32,7 @@
         - restart mysqld
     - name: copy netdata.conf
       copy:
-          src: ./template//netdata.conf
+          src: ./template/netdata.conf
           dest: /etc/netdata.conf
           backup: yes
       notify:

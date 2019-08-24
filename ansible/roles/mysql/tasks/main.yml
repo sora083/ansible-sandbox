@@ -1,0 +1,11 @@
+- name: mysqlのインストール
+  - apt: name=mysql-server
+
+- name: copy my.cnf
+  copy:
+    src: my.cnf
+    dest: /etc/my.cnf
+    backup: yes
+
+- name: mysqlの再起動
+    - service: name=mysql state=れstarted enabled=yes

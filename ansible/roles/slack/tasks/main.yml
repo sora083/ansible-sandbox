@@ -1,0 +1,8 @@
+- name: Send notification message via Slack
+  slack:
+    #domain: u-next.slack.com
+    token: slackapitoken
+    msg: "{{ msg }} completed"
+    color: green
+    channel: "#isucon"
+  delegate_to: localhost 
