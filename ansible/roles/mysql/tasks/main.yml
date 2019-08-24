@@ -8,4 +8,4 @@
     backup: yes
 
 - name: mysqlの再起動
-    - service: name=mysql state=れstarted enabled=yes
+    - service: name=mysql state=restarted enabled=yes
