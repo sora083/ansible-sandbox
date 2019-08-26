@@ -1,0 +1,6 @@
+- name: deploy netdata
+  hosts: web
+  become: yes
+  roles:
+    - netdata
+    #- slack

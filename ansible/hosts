@@ -1,15 +1,19 @@
 [web1]
+#isu01
 controller
 
 [web2]
-target
+isu02
+
+[web3]
+isu03
 
 [web]
+#isu01
+#isu02
+#isu03
 controller
 target
 
 [local]
 localhost ansible_connection=local
-
-[local:vars]
-app=test

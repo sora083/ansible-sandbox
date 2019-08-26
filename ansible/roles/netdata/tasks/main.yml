@@ -1,6 +1,6 @@
-- name: netdataのインストール
-  #- user: name=isucon groups=sudo
-  - apt: name=netdata
+- name: install netdata
+  apt:
+    name: netdata
 
 - name: copy netdata.conf
   copy:
@@ -8,5 +8,8 @@
     dest: /etc/netdata.conf
     backup: yes
 
-- name: netdataの再起動
-    - service: name=netdata state=れstarted enabled=yes
+- name: restart netdata
+  service:
+    name: netdata
+    state: restarted
+    enabled: yes

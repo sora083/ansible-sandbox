@@ -2,7 +2,7 @@
   slack:
     #domain: u-next.slack.com
     token: slackapitoken
-    msg: "{{ msg }} completed"
+    msg: "deploy has completed"
     color: green
     channel: "#isucon"
   delegate_to: localhost 
