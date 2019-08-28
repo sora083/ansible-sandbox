@@ -1,6 +1,5 @@
 - name: deploy netdata
   hosts: web
-  become: yes
   roles:
-    - netdata
-    #- slack
+    - { role: netdata, become: yes }
+    - { role: slack, become: no }

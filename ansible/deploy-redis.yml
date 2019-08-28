@@ -1,0 +1,5 @@
+- name: deploy redis
+  hosts: web1
+  roles:
+    - { role: redis, become: yes }
+    #- { role: slack, become: no }

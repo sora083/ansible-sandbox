@@ -8,6 +8,8 @@ ansible-playbook -i ./hosts -l web1 ./deploy-middleware.yml --check --diff
 ansible-playbook -i ./hosts -l web1 ./deploy-nginx.yml --check --diff
 ansible-playbook -i ./hosts -l web1 ./deploy-mysql.yml --check --diff
 ansible-playbook -i ./hosts -l web ./deploy-netdata.yml --check --diff
+
+ansible-playbook -i ./hosts -l web1 ./deploy-redis.yml --check --diff
 ```
 
 run
@@ -19,6 +21,8 @@ ansible-playbook -i ./hosts -l web1 ./deploy-middleware.yml
 ansible-playbook -i ./hosts -l web1 ./deploy-nginx.yml
 ansible-playbook -i ./hosts -l web1 ./deploy-mysql.yml
 ansible-playbook -i ./hosts -l web ./deploy-netdata.yml
+
+ansible-playbook -i ./hosts -l web1 ./deploy-redis.yml
 ```
 
 slack send
@@ -49,9 +53,8 @@ service --status-all | grep -E "mysql|nginx|netdata"
 
 
 ### 課題
-* slack通知の連携が出来ていないので改善が必要
 * mysqlは自分でインストールしないほうがいいかも・・
-* データの初期化タスクをmysqlで入れられないか？
+* redisのインストールうまく行かない・・
 
 ### 参考
 * [slack通知](https://qiita.com/imunew/items/ea2bba8859bc709ffa1f)

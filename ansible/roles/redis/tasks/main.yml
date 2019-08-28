@@ -1,0 +1,15 @@
+- name: install redis
+  apt:
+    name: redis-server
+
+# - name: copy my.cnf
+#   copy:
+#     src: my.cnf
+#     dest: /etc/my.cnf
+#     backup: yes
+
+- name: restart redis
+  service:
+    name: redis-server
+    state: restarted
+    enabled: yes

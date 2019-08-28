@@ -1,8 +1,8 @@
 - name: deploy middlewares
   hosts: web
-  become: yes
   roles:
-    - nginx
-    - mysql
-    - netdata
-    #- slack
+    - { role: nginx, become: yes }
+    - { role: mysql, become: yes }
+    - { role: netdata, become: yes }
+    #- { role: redis, become: yes }
+    - { role: slack, become: no }

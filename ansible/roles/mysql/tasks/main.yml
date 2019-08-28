@@ -13,3 +13,8 @@
     name: mysql
     state: restarted
     enabled: yes
+
+- name: initialize
+  shell: ./init.sh
+  args:
+    chdir: /home/isucon
