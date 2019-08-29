@@ -33,6 +33,7 @@ ansible-playbook -i ./hosts -l web1 ./deploy-redis.yml
     * nginx: nginxのconfファイル配置と再起動
     * mysql: mysqlのconfファイル配置と再起動
     * netdata: netdataのconfファイル配置と再起動
+    * systemd: 自動再起動用のスクリプト配置など
 
 ### Tips
 #### サービスの確認
