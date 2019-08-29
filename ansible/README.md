@@ -45,6 +45,12 @@ service --status-all | grep -E "mysql|nginx|netdata"
 ```
 ansible-inventory -i hosts --graph
 ```
+
+#### nginxのシンタックスチェック
+```
+sudo nginx -t -c /etc/nginx/nginx.conf
+```
+
 #### slacのwebトークン確認
 https://${your domain}.slack.com/apps/manage
 

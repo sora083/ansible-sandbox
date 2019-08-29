@@ -5,16 +5,19 @@
 - name: put portopen.sh with template
   template:
     src: portopen.sh.j2
-    dest: /tmp/portopen.sh
+    dest: /opt/portopen.sh
+    mode: 775
     backup: yes
 
-- name: portopen.service
+- name: put portopen.service
   copy:
-    src: put portopen.service
+    src: portopen.service
     dest: /etc/systemd/system/portopen.service
+    mode: 775
 
 # 当日に修正
 - name: put modified app.service
   copy:
     src: app.service
     dest: /etc/systemd/system/app.service
+    mode: 775

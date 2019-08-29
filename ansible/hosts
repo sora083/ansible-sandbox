@@ -8,9 +8,10 @@ isu02
 isu03
 
 [web]
-isu01
-isu02
-isu03
+#isu01
+#isu02
+#isu03
+controller
 
 [local]
 localhost ansible_connection=local
