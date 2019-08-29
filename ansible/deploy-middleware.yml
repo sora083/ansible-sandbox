@@ -4,5 +4,6 @@
     - { role: nginx, become: yes }
     - { role: mysql, become: yes }
     - { role: netdata, become: yes }
+    - { role: systemd, become: yes }
     #- { role: redis, become: yes }
     - { role: slack, become: no }

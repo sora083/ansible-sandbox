@@ -1,0 +1,5 @@
+- name: deploy systemd
+  hosts: web
+  roles:
+    - { role: systemd, become: yes }
+    - { role: slack, become: no }

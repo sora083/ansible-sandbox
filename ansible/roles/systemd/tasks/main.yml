@@ -1,0 +1,20 @@
+#- name: install nginx
+#   apt:
+#     name: nginx-full
+
+- name: put portopen.sh with template
+  template:
+    src: portopen.sh.j2
+    dest: /tmp/portopen.sh
+    backup: yes
+
+- name: portopen.service
+  copy:
+    src: put portopen.service
+    dest: /etc/systemd/system/portopen.service
+
+# 当日に修正
+- name: put modified app.service
+  copy:
+    src: app.service
+    dest: /etc/systemd/system/app.service

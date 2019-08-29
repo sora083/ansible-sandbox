@@ -1,9 +1,0 @@
-- hosts: local
-  sudo: false
-  tasks:
-    - include: ./tasks/notify-slack.yml
-      run_once: true
-      vars:
-        - channel: "#isucon"
-        - color: "good"
-        - msg: "test"

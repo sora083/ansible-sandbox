@@ -1,0 +1,12 @@
+[Unit]
+Description=Checks database availability on %I
+After=network.target
+Requires=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/opt/portopen.sh %I
+
+[Install]
+WantedBy=default.target

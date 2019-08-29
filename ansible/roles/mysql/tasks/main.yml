@@ -2,7 +2,7 @@
 #   apt:
 #     name: mysql-server
 
-- name: copy my.cnf
+- name: put my.cnf
   copy:
     src: my.cnf
     dest: /etc/mysql/my.cnf

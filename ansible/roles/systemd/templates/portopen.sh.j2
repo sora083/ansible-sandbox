@@ -1,0 +1,18 @@
+#!/bin/bash
+dbhost={{ db_host }} # FIXME
+dbport={{ db_port }}# FIXME
+maxtries=${3:-30}
+wait=${4:-10}
+tries=1
+
+# Check communication to database
+while ! [ 2>/dev/null : < /dev/tcp/$dbhost/$dbport ]; do
+   echo "Unable to connect to database on $dbhost TCP/$dbport (attempt $tries): retrying in $wait seconds" >&2
+   (( tries++ ))
+   if [[ $tries -le $maxtries ]]; then
+      sleep $wait
+   else
+      echo "Unable to connect to database on $dbhost TCP/$dbport: aborting"
+      exit 1
+   fi
+done
