@@ -51,6 +51,8 @@ ansible-inventory -i hosts --graph
 service --status-all | grep -E "mysql|nginx|netdata"
 ```
 
+### webhook
+https://${your domain}.slack.com/apps/manage
 
 ### 課題
 * mysqlは自分でインストールしないほうがいいかも・・

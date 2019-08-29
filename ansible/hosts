@@ -1,6 +1,5 @@
 [web1]
-#isu01
-controller
+isu01
 
 [web2]
 isu02
@@ -9,11 +8,9 @@ isu02
 isu03
 
 [web]
-#isu01
-#isu02
-#isu03
-controller
-target
+isu01
+isu02
+isu03
 
 [local]
 localhost ansible_connection=local

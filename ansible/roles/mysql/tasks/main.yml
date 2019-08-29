@@ -1,11 +1,11 @@
-- name: install mysql
-  apt:
-    name: mysql-server
+# - name: install mysql
+#   apt:
+#     name: mysql-server
 
 - name: copy my.cnf
   copy:
     src: my.cnf
-    dest: /etc/my.cnf
+    dest: /etc/mysql/my.cnf
     backup: yes
 
 - name: restart mysql
@@ -14,7 +14,7 @@
     state: restarted
     enabled: yes
 
-- name: initialize
-  shell: ./init.sh
-  args:
-    chdir: /home/isucon
+# - name: initialize
+#   shell: ./init.sh
+#   args:
+#     chdir: /home/isucon

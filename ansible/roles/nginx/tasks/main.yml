@@ -1,6 +1,6 @@
-- name: install nginx
-  apt:
-    name: nginx-full
+#- name: install nginx
+#   apt:
+#     name: nginx-full
 
 - name: put nginx.conf with template
   template:

@@ -1,6 +1,6 @@
 - name: Send notification message via Slack
   slack:
-    token: "{{ token }}"
+    token: "{{ token}}"
     msg: "deploy has completed"
     color: good
     channel: "#isucon"

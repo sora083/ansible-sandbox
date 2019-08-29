@@ -10,6 +10,8 @@ pid /run/nginx.pid;
 # nginx worker の設定
 # worker_rlimit_nofile  4096;  # worker_connections の 4 倍程度（感覚値）
 
+# include /etc/nginx/modules-enabled/*.conf;
+
 events {
     worker_connections 1024; # 大きくするなら worker_rlimit_nofile も大きくする（file descriptor数の制限を緩める)
 }
@@ -48,39 +50,55 @@ http {
     # typesディレクティブのハッシュテーブルに割り当てるバケットの最大サイズを設定
     types_hash_max_size 2048;
 
+	##
+	# Gzip Settings
+	##
+
+	gzip on;
+
+	# gzip_vary on;
+	# gzip_proxied any;
+	# gzip_comp_level 6;
+	# gzip_buffers 16 8k;
+	# gzip_http_version 1.1;
+	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
     # 3台構成にする場合の例
     upstream isucon1 {
-        server {{ host01 }}:8080 fail_timeout=0;
+        server {{ host01 }}:{{ port}} fail_timeout=0;
     }
 
     upstream isucon2 {
-        server {{ host02 }}:8080 fail_timeout=0;
+        server {{ host02 }}:{{ port}} fail_timeout=0;
     }
 
     upstream isucon3 {
-        server {{ host03 }}:8080 fail_timeout=0;
+        server {{ host03 }}:{{ port}} fail_timeout=0;
     }
 
     upstream app {
-        server {{ host02 }}:8080 fail_timeout=0;
-        server {{ host03 }}:8080 fail_timeout=0;
+        server {{ host01 }}:{{ port}} fail_timeout=0;
+        server {{ host02 }}:{{ port}}  fail_timeout=0;
+        server {{ host03 }}:{{ port}}  fail_timeout=0;
     }
 
     server {
-        listen       80 default_server;
-        listen       [::]:80 default_server;
-        server_name  torb.example.com;
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        server_name isubata.example.com;
 
-        #root         /home/isucon/torb/webapp/static;
+        client_max_body_size 20M;
 
-    	access_log  /var/log/nginx/access.log  ltsv;
-        # 最終計測ではoffにする
-        #access_log off;
+        root /home/isucon/isubata/webapp/public;
+
+        location /favicon.ico { }
+        location /fonts/ { }
+        location /js/ { }
+        location /css/ { }
 
         location / {
-	        proxy_set_header Host $host;
-	        proxy_pass http://app;
-            #proxy_pass http://127.0.0.1:8080;
+                proxy_set_header Host $http_host;
+                proxy_pass http://app;
         }
     }
 }
